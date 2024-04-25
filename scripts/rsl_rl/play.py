@@ -40,7 +40,8 @@ simulation_app = app_launcher.app
 import os
 
 import gymnasium as gym
-import omni.isaac.contrib_tasks  # noqa: F401
+
+# import omni.isaac.contrib_tasks  # noqa: F401
 import omni.isaac.orbit_tasks  # noqa: F401
 import torch
 from omni.isaac.orbit_tasks.utils import get_checkpoint_path, parse_env_cfg
@@ -49,10 +50,10 @@ from omni.isaac.orbit_tasks.utils.wrappers.rsl_rl import (
     RslRlVecEnvWrapper,
     export_policy_as_onnx,
 )
-from rsl_rl.runners import OnPolicyRunner
 
 # Import extensions to set up environment tasks
-import orbit.ext_template.tasks  # noqa: F401  TODO: import orbit.<your_extension_name>
+import orbit.fr.tasks  # noqa: F401  TODO: import orbit.<your_extension_name>
+from rsl_rl.runners import OnPolicyRunner
 
 
 def main():

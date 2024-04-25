@@ -35,12 +35,15 @@ args_cli = parser.parse_args()
 
 # load cheaper kit config in headless
 if args_cli.headless:
-    app_experience = f"{os.environ['EXP_PATH']}/omni.isaac.sim.python.gym.headless.kit"
+    args_cli.experience = f"{os.environ['EXP_PATH']}/omni.isaac.sim.python.gym.headless.kit"
+    # app_experience = f"{os.environ['EXP_PATH']}/omni.isaac.sim.python.gym.headless.kit"
 else:
-    app_experience = f"{os.environ['EXP_PATH']}/omni.isaac.sim.python.kit"
+    args_cli.experience = f"{os.environ['EXP_PATH']}/omni.isaac.sim.python.kit"
+    # app_experience = f"{os.environ['EXP_PATH']}/omni.isaac.sim.python.kit"
 
 # launch omniverse app
-app_launcher = AppLauncher(args_cli, experience=app_experience)
+app_launcher = AppLauncher(args_cli)
+# app_launcher = AppLauncher(args_cli, experience=app_experience)
 simulation_app = app_launcher.app
 
 """Rest everything follows."""
@@ -60,10 +63,10 @@ from omni.isaac.orbit_tasks.utils.wrappers.rsl_rl import (
     RslRlOnPolicyRunnerCfg,
     RslRlVecEnvWrapper,
 )
-from rsl_rl.runners import OnPolicyRunner
 
 # Import extensions to set up environment tasks
-import orbit.ext_template.tasks  # noqa: F401  TODO: import orbit.<your_extension_name>
+import orbit.fr.tasks  # noqa: F401  TODO: import orbit.<your_extension_name>
+from rsl_rl.runners import OnPolicyRunner
 
 torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
