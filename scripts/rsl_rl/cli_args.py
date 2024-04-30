@@ -36,6 +36,8 @@ def add_rsl_rl_args(parser: argparse.ArgumentParser):
     arg_group.add_argument(
         "--log_project_name", type=str, default=None, help="Name of the logging project when using wandb or neptune."
     )
+    arg_group.add_argument("--max_iterations", type=int, default=None, help="Max iterations to train")
+    arg_group.add_argument("--save_interval", type=int, default=None, help="Interval of saving checkpoints")
 
 
 def parse_rsl_rl_cfg(task_name: str, args_cli: argparse.Namespace) -> RslRlOnPolicyRunnerCfg:
@@ -66,6 +68,10 @@ def parse_rsl_rl_cfg(task_name: str, args_cli: argparse.Namespace) -> RslRlOnPol
         rslrl_cfg.run_name = args_cli.run_name
     if args_cli.logger is not None:
         rslrl_cfg.logger = args_cli.logger
+    if args_cli.max_iterations is not None:
+        rslrl_cfg.max_iterations = args_cli.max_iterations
+    if args_cli.save_interval is not None:
+        rslrl_cfg.max_iterations = args_cli.save_interval
     # set the project name for wandb and neptune
     if rslrl_cfg.logger in {"wandb", "neptune"} and args_cli.log_project_name:
         rslrl_cfg.wandb_project = args_cli.log_project_name
