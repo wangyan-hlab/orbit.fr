@@ -28,6 +28,7 @@ class FR5ReachEnvCfg(ReachEnvCfg):
         super().__post_init__()
 
         # switch robot to fr5
+        FR5_CFG.init_state.rot = (0.0, 0.0, 0.0, 1.0)
         self.scene.robot = FR5_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
         # override events
         self.events.reset_robot_joints.params["position_range"] = (0.75, 1.25)

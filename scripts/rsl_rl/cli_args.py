@@ -71,7 +71,7 @@ def parse_rsl_rl_cfg(task_name: str, args_cli: argparse.Namespace) -> RslRlOnPol
     if args_cli.max_iterations is not None:
         rslrl_cfg.max_iterations = args_cli.max_iterations
     if args_cli.save_interval is not None:
-        rslrl_cfg.max_iterations = args_cli.save_interval
+        rslrl_cfg.save_interval = args_cli.save_interval
     # set the project name for wandb and neptune
     if rslrl_cfg.logger in {"wandb", "neptune"} and args_cli.log_project_name:
         rslrl_cfg.wandb_project = args_cli.log_project_name

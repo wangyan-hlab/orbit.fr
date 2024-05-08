@@ -54,7 +54,7 @@ class ReachSceneCfg(InteractiveSceneCfg):
     table = AssetBaseCfg(
         prim_path="{ENV_REGEX_NS}/Table",
         spawn=sim_utils.UsdFileCfg(
-            usd_path=f"/home/{USER}/orbit.fr/isaacsim_usd/FR5_V6/usd/FR5_V6_RTQ85/testbed_table.usd", scale=(0.8, 0.8, 0.8)
+            usd_path=f"/home/{USER}/orbit.fr/isaacsim_usd/FR5_V6/usd/testbed_table.usd", scale=(0.8, 0.8, 0.8)
         ),
         init_state=AssetBaseCfg.InitialStateCfg(pos=(0.46, -0.40, -0.51), rot=(0.0, 0.0, 0.0, 1.0)),
     )
